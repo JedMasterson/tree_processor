@@ -26,7 +26,8 @@ class TestClass:
             tested_item = self.processor.get_item(item["id"])
             example_item = item
             items_test.append(tested_item == example_item)
-        assert items_test
+        test = all(flag == 1 for (flag) in items_test)
+        assert test
 
     def test_children(self):
         example_item = self.items[1]

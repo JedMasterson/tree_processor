@@ -8,15 +8,15 @@ class TreeProcessor:
         return self.items
 
     def get_item(self, item_id: int):
-        for item in self.items:
-            if item["id"] == item_id:
-                return item
+        item = list(filter(lambda x: x["id"] == item_id, self.items))
+        try:
+            item = item[0]
+            return item
+        except:
+            return None
 
     def get_children(self, item_id: int):
-        child_list = []
-        for item in self.items:
-            if item["parent"] == item_id:
-                child_list.append(item)
+        child_list = list(filter(lambda item: item["parent"] == item_id, self.items))
         return child_list
 
     def get_all_parents(self, item_id: int):
